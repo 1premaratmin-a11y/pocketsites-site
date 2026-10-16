@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tell me about your business | Pocket Sites</title>
+  <meta name="description" content="The Pocket Sites onboarding form. Ten to fifteen minutes, and I'll send your free mockup within three business days.">
+  <meta name="theme-color" content="#FFC61A">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="tape" aria-hidden="true"></div>
+
+  <header class="top">
+    <a class="mark" href="./" aria-label="Pocket Sites, home">pocket<span>sites</span></a>
+    <nav aria-label="Main">
+      <a href="./">Back to the site</a>
+    </nav>
+  </header>
+
+  <main id="top" class="formpage">
+    <div class="wrap-narrow">
+      <h1 class="form-title">Tell me about your business</h1>
+      <p class="lede">This takes 10 to 15 minutes. Send it and I’ll have your free mockup to you within 3 business days. Anything not marked (needed) can be left blank and sent later.</p>
+      <p class="fine">Please don’t put passwords, bank details or card numbers anywhere on this form.</p>
+
+      <form id="intake" action="mailto:1premaratmin@gmail.com?subject=Onboarding%20form" method="post" enctype="text/plain">
+
+        <fieldset>
+          <legend>About you</legend>
+          <div class="field">
+            <label for="yourname">Your name <span class="need">(needed)</span></label>
+            <input id="yourname" name="Your name" type="text" autocomplete="name" required>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="email">Your email <span class="need">(needed)</span></label>
+              <input id="email" name="Your email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Your phone <span class="need">(needed)</span></label>
+              <input id="phone" name="Your phone" type="tel" autocomplete="tel" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your business</legend>
+          <div class="field">
+            <label for="bizname">Business name <span class="need">(needed)</span></label>
+            <input id="bizname" name="Business name" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="what">What does the business do? <span class="need">(needed)</span></label>
+            <span class="hint">A sentence or two, in your own words.</span>
+            <textarea id="what" name="What the business does" rows="3" required></textarea>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="city">City or town <span class="need">(needed)</span></label>
+              <input id="city" name="City" type="text" required>
+            </div>
+            <div class="field">
+              <label for="years">Years in business</label>
+              <input id="years" name="Years in business" type="text">
+            </div>
+          </div>
+          <div class="field">
+            <label for="areas">Areas you serve <span class="need">(needed)</span></label>
+            <span class="hint">Towns, neighbourhoods or a distance from your base.</span>
+            <input id="areas" name="Areas served" type="text" required>
+          </div>
+          <div class="field">
+            <label for="address">Street address, if customers visit you</label>
+            <input id="address" name="Street address" type="text" autocomplete="street-address">
+          </div>
+          <div class="field">
+            <label for="hours">Business hours</label>
+            <input id="hours" name="Hours" type="text" placeholder="Mon to Fri, 8 to 5">
+          </div>
+          <div class="field">
+            <label for="proof">Licences, insurance or certifications</label>
+            <span class="hint">Only list ones you hold. Trades often show a licence number.</span>
+            <textarea id="proof" name="Licences, insurance, certifications" rows="2"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>What you offer</legend>
+          <div class="field">
+            <label for="services">Your services <span class="need">(needed)</span></label>
+            <span class="hint">One per line, with a short note on each. Up to 8.</span>
+            <textarea id="services" name="Services" rows="6" required></textarea>
+          </div>
+          <div class="field">
+            <label for="goal">What should a visitor do first? <span class="need">(needed)</span></label>
+            <select id="goal" name="Main action" required>
+              <option value="">Choose one</option>
+              <option>Call me</option>
+              <option>Ask for a quote</option>
+              <option>Book a time</option>
+              <option>Visit in person</option>
+              <option>Something else, I'll explain below</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your website and web address</legend>
+          <div class="field">
+            <label for="currentsite">Your current website address, if you have one <span class="need">(needed)</span></label>
+            <span class="hint">Write "none" if you don't have one.</span>
+            <input id="currentsite" name="Current website" type="text" required>
+          </div>
+          <div class="field">
+            <label for="domain">Your own web address (domain) <span class="need">(needed)</span></label>
+            <select id="domain" name="Domain" required>
+              <option value="">Choose one</option>
+              <option>I own one already</option>
+              <option>I want help choosing and buying one</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="formemail">Which email should quote requests go to? <span class="need">(needed)</span></label>
+            <input id="formemail" name="Form delivery email" type="email" required>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Photos, reviews and look</legend>
+          <div class="field">
+            <label for="photos">Photos of your finished work</label>
+            <select id="photos" name="Photos">
+              <option value="">Choose one</option>
+              <option>Yes, they're mine</option>
+              <option>Some are mine</option>
+              <option>I don't have any yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="logo">Logo and colours</label>
+            <select id="logo" name="Logo">
+              <option value="">Choose one</option>
+              <option>I have a logo</option>
+              <option>I have colours but no logo</option>
+              <option>I'd like you to suggest both</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="social">Facebook, Instagram or Google review links</label>
+            <textarea id="social" name="Social and review links" rows="2"></textarea>
+          </div>
+          <div class="field">
+            <label for="reviews">Real customer reviews I may quote</label>
+            <span class="hint">Only ones the customer is happy to have shown. I never invent reviews.</span>
+            <textarea id="reviews" name="Reviews to quote" rows="3"></textarea>
+          </div>
+          <div class="field">
+            <label for="liked">Two websites you like, and what you like about them</label>
+            <textarea id="liked" name="Sites you like" rows="3"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Permissions and the rest</legend>
+          <div class="check">
+            <input id="portfolio" name="Portfolio permission" type="checkbox" value="Yes">
+            <label for="portfolio">Pocket Sites may show my finished site, with a link, in its portfolio.</label>
+          </div>
+          <div class="check">
+            <input id="testimonial" name="Testimonial permission" type="checkbox" value="Yes">
+            <label for="testimonial">Pocket Sites may ask me for a short testimonial after launch.</label>
+          </div>
+          <div class="field">
+            <label for="heard">How did you hear about Pocket Sites?</label>
+            <input id="heard" name="Heard about us" type="text">
+          </div>
+          <div class="field">
+            <label for="anything">Anything else I should know</label>
+            <textarea id="anything" name="Anything else" rows="3"></textarea>
+          </div>
+        </fieldset>
+
+        <p class="privacy">Your answers go to Minuka by email, from your own email app. Nothing is stored on this page. They’re used only to build your site, and I’ll delete them if you ask once the job is over, except records I must keep for tax purposes.</p>
+
+        <div class="actions">
+          <button class="btn" type="submit" id="prepare">Prepare my email</button>
+        </div>
+      </form>
+
+      <section class="review" id="review" hidden aria-labelledby="review-h" tabindex="-1">
+        <h2 id="review-h">Check your answers, then send</h2>
+        <p>Your email is ready. It opens in your email app with these answers filled in. If anything was cut off, use <em>Copy my answers</em> and paste them into a new email to <strong>1premaratmin@gmail.com</strong>.</p>
+        <pre id="preview" aria-label="Your answers"></pre>
+        <p class="actions">
+          <a class="btn" id="sendlink" href="#">Open my email app</a>
+          <button class="btn btn-quiet" type="button" id="copy">Copy my answers</button>
+          <button class="textlink linkbtn" type="button" id="edit">Go back and edit</button>
+        </p>
+        <p class="fine" id="copied" role="status"></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <a class="mark" href="./" aria-label="Pocket Sites, home">pocket<span>sites</span></a>
+    <p>Websites for Ontario small businesses. Oakville, Ontario. © 2026 Pocket Sites</p>
+  </footer>
+
+  <script src="form.js"></script>
+</body>
+</html>
