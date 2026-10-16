@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="phone.css">
   <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
@@ -28,7 +29,7 @@
   </header>
 
   <main id="top">
-    <!-- Scroll story: the phone stays pinned while the seven fixes are read, and each fix is applied to it -->
+    <!-- Scroll story: the phone stays pinned while the seven fixes are read, and a cursor applies each one -->
     <div class="story" id="story">
       <section class="hero-copy">
         <h1>A website that’s actually yours.</h1>
@@ -40,56 +41,132 @@
         <p class="fine">No monthly fee to me. The mockup is free, with no obligation.</p>
       </section>
 
-      <div class="story-phone" aria-hidden="true">
-        <div class="phone" id="phone">
-          <div class="chrome">
-            <div class="crow">
-              <div class="tab swap" data-fix="1">
-                <span class="b">Mysite</span>
-                <span class="a">Sample Painting Co. | Painters in Oakville</span>
-              </div>
-              <span class="mk" data-mk="1">1</span>
-            </div>
-            <div class="crow">
-              <div class="url swap" data-fix="2">
-                <span class="b">mybusiness.wixsite.com/mysite</span>
-                <span class="a">samplepainting.ca</span>
-              </div>
-              <span class="mk" data-mk="2">2</span>
-            </div>
-          </div>
+      <div class="story-phone" id="storyPhone" aria-hidden="true">
+        <div class="device-fit" id="deviceFit">
+          <div class="phone" id="phone">
+            <i class="sb sb-action"></i><i class="sb sb-up"></i><i class="sb sb-down"></i><i class="sb sb-power"></i>
+            <div class="bezel">
+              <div class="screen" id="screen">
+                <div class="island"></div>
+                <div class="statusbar">
+                  <span>9:41</span>
+                  <span class="sys">
+                    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                    <svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 11.2a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8zM4.6 6.6a5.6 5.6 0 0 1 7.8 0l-1.2 1.3a3.8 3.8 0 0 0-5.4 0zM1.6 3.6a9.8 9.8 0 0 1 13.8 0l-1.2 1.3a8 8 0 0 0-11.4 0z"/></svg>
+                    <svg width="27" height="12" viewBox="0 0 27 12"><rect x="0.5" y="0.5" width="22" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="19" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".4"/></svg>
+                  </span>
+                </div>
 
-          <div class="screen">
-            <div class="banner" data-fix="3">
-              <span>This website was built with a free builder. Create yours today.</span>
-              <span class="mk" data-mk="3">3</span>
-            </div>
-            <div class="t-hero">
-              <span class="swap" data-fix="1"><span class="b">ABC Painting</span><span class="a">Sample Painting Co.</span></span>
-            </div>
-            <div class="t-menu" data-fix="4">
-              <span>Home</span><span>About</span><span>Gallery</span><span>Contact</span>
-              <span class="mk" data-mk="4">4</span>
-            </div>
-            <p class="t-body">We do painting. Call us for a quote.</p>
-            <div class="t-phone swap" data-fix="5">
-              <span class="b">Call: <span class="bad">123-456-7890</span></span>
-              <span class="a"><span class="callbtn">Tap to call</span></span>
-              <span class="mk" data-mk="5">5</span>
-            </div>
-            <div class="t-social swap" data-fix="6">
-              <span class="b"><i></i><i></i><i></i></span>
-              <span class="a"><em>Facebook</em><em>Instagram</em></span>
-              <span class="mk" data-mk="6">6</span>
-            </div>
-            <div class="t-foot swap" data-fix="7">
-              <span class="b"><span class="bad">© 2023 by The Painting Company</span></span>
-              <span class="a">© 2026 Sample Painting Co.</span>
-              <span class="mk" data-mk="7">7</span>
+                <div class="chrome">
+                  <div class="crow">
+                    <div class="tab swap" id="tabChip">
+                      <span class="b"><i class="fav"></i>Mysite</span>
+                      <span class="a"><i class="fav fav-s">S</i>Sample Painting Co. | Painters in Oakville</span>
+                    </div>
+                    <span class="mk" id="mk1" data-mk="1">1</span>
+                  </div>
+                  <div class="crow">
+                    <div class="url swap" id="urlBar">
+                      <span class="b"><i class="lock"></i>mybusiness.wixsite.com/mysite</span>
+                      <span class="a" id="urlA"><i class="lock"></i>samplepainting.ca</span>
+                    </div>
+                    <span class="mk" id="mk2" data-mk="2">2</span>
+                  </div>
+                </div>
+
+                <div class="viewport" id="viewport">
+                  <div class="page" id="page">
+
+                    <div class="rg rg-banner" id="rgBanner" style="--hb:46px;--ha:0px">
+                      <div class="face b" id="bannerText">This website was built with a free builder. Create yours today.</div>
+                      <span class="mk" id="mk3" data-mk="3">3</span>
+                    </div>
+
+                    <div class="rg rg-header" id="rgHeader" style="--hb:60px;--ha:64px">
+                      <div class="face b"><strong>ABC Painting</strong><span id="navLinks"><i>Home</i><i>About</i><i>Gallery</i><i>Contact</i></span></div>
+                      <div class="face a">
+                        <div class="logo"><i>S</i>Sample Painting Co.</div>
+                        <div class="burger" id="burger"><i></i><i></i><i></i></div>
+                      </div>
+                      <span class="mk" id="mk4" data-mk="4">4</span>
+                    </div>
+
+                    <div class="rg rg-hero" id="rgHero" style="--hb:150px;--ha:318px">
+                      <div class="face b"><span id="heroB">ABC Painting</span></div>
+                      <div class="face a">
+                        <h3>Painting for homes in Oakville and Burlington</h3>
+                        <p>Interior, exterior and cabinet painting. Free quotes.</p>
+                        <div class="hbtns"><span class="hb hb-y" id="heroCta">Request a quote</span><span class="hb hb-g">Call</span></div>
+                        <div class="swatches"><i></i><i></i><i></i><i></i><i></i></div>
+                      </div>
+                    </div>
+
+                    <div class="rg rg-contact" id="rgContact" style="--hb:96px;--ha:96px">
+                      <div class="face b"><p>We do painting. Call us for a quote.</p><p id="phoneNum">Call: 123-456-7890</p></div>
+                      <div class="face a"><div class="callcard"><div><b>Call or text</b><small>Mon to Sat, 8 to 5</small></div><span class="callbtn">Tap to call</span></div></div>
+                      <span class="mk" id="mk5" data-mk="5">5</span>
+                    </div>
+
+                    <div class="rg rg-services" id="rgServices" style="--hb:0px;--ha:216px">
+                      <div class="face a">
+                        <h4>What we paint</h4>
+                        <ul class="svc">
+                          <li><b>Interior</b><span>Walls, trim and ceilings</span></li>
+                          <li><b>Exterior</b><span>Siding, decks and fences</span></li>
+                          <li><b>Cabinets</b><span>Kitchens and vanities</span></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="rg rg-areas" id="rgAreas" style="--hb:0px;--ha:208px">
+                      <div class="face a">
+                        <h4>Where we work</h4>
+                        <div class="chips"><span>Oakville</span><span>Burlington</span><span>Milton</span></div>
+                        <div class="map"></div>
+                      </div>
+                    </div>
+
+                    <div class="rg rg-social" id="rgSocial" style="--hb:70px;--ha:76px">
+                      <div class="face b" id="socialB"><i></i><i></i><i></i></div>
+                      <div class="face a"><span class="soc"><i></i>Facebook</span><span class="soc"><i></i>Instagram</span></div>
+                      <span class="mk" id="mk6" data-mk="6">6</span>
+                    </div>
+
+                    <div class="rg rg-foot" id="rgFoot" style="--hb:70px;--ha:150px">
+                      <div class="face b" id="footB">© 2023 by The Painting Company</div>
+                      <div class="face a">
+                        <div class="logo"><i>S</i>Sample Painting Co.</div>
+                        <p>Oakville, Ontario</p>
+                        <p>Open Mon to Sat, 8 to 5</p>
+                        <p>© 2026 Sample Painting Co.</p>
+                      </div>
+                      <span class="mk" id="mk7" data-mk="7">7</span>
+                    </div>
+                  </div>
+
+                  <div class="menu-sheet" id="menuSheet">
+                    <div><b>Home</b><small>samplepainting.ca</small></div>
+                    <div><b>Services</b><small>samplepainting.ca/services</small></div>
+                    <div><b>Gallery</b><small>samplepainting.ca/gallery</small></div>
+                    <div><b>About</b><small>samplepainting.ca/about</small></div>
+                    <div><b>Contact</b><small>samplepainting.ca/contact</small></div>
+                  </div>
+
+                  <div class="callbar" id="callbar"><span class="cb-a">Call</span><span class="cb-b">Get a quote</span></div>
+                </div>
+
+                <div class="homebar"></div>
+                <div class="fx" id="fx"></div>
+                <div class="cursor" id="cursor">
+                  <i class="halo"></i><i class="spark"></i>
+                  <svg width="26" height="26" viewBox="0 0 26 26"><path d="M3 2 L3 21 L8.2 16.4 L11.6 24 L15 22.5 L11.7 15.1 L18.5 14.6 Z" fill="#fff" stroke="#121A2B" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+              <div class="glass"></div>
             </div>
           </div>
         </div>
-        <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <p class="demo-note" id="demoNote">A sample page, not a real business. Scroll to fix it.</p>
       </div>
 
