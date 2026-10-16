@@ -191,8 +191,12 @@ p { margin: 0 0 1rem; max-width: 62ch; }
   padding: 2rem 0;
   border-top: 1px solid var(--rule);
 }
-.js .step { opacity: 0.28; transition: opacity 0.35s; }
-.js .step.on { opacity: 1; }
+/* inactive steps stay fully legible; the active one is marked by colour, not by fading text */
+.step .now { color: var(--muted); transition: color 0.3s; }
+.step.on .now { color: var(--ink); }
+.step { border-top-color: var(--rule); transition: border-color 0.3s; }
+.step.on { border-top-color: var(--ink); }
+.step:not(.on) .n { background: #9b3a2e; }
 
 .step .n {
   flex: none;
@@ -387,7 +391,7 @@ p { margin: 0 0 1rem; max-width: 62ch; }
 
 /* ---------- sections below the story ---------- */
 .band-dark {
-  background: var(--ink);
+  background: var(--denim);
   color: var(--paper);
   border-block: 2px solid var(--ink);
   padding: clamp(3rem, 7vw, 5.5rem) 0;
