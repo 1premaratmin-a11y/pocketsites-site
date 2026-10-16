@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
   <div class="tape" aria-hidden="true"></div>
@@ -27,8 +28,9 @@
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
+    <!-- Scroll story: the phone stays pinned while the seven fixes are read, and each fix is applied to it -->
+    <div class="story" id="story">
+      <section class="hero-copy">
         <h1>A website that’s actually yours.</h1>
         <p class="lede">I build five-page websites for Ontario small businesses for a flat <strong>$500</strong>. They work on a phone, live at your own web address, and there’s no monthly fee to me.</p>
         <p class="actions">
@@ -36,101 +38,101 @@
           <a class="textlink" href="#fixes">See what I fix</a>
         </p>
         <p class="fine">The mockup is free and comes with no obligation.</p>
-      </div>
+      </section>
 
-      <div class="demo" id="demo">
-        <div class="switch" role="group" aria-label="Compare a website before and after">
-          <button type="button" class="seg" data-view="today" aria-pressed="true">Today</button>
-          <button type="button" class="seg" data-view="after" aria-pressed="false">With Pocket Sites</button>
-        </div>
-
-        <div class="phone">
+      <div class="story-phone" aria-hidden="true">
+        <div class="phone" id="phone">
           <div class="chrome">
-            <div class="tab"><span class="tab-title" id="tabTitle">Mysite</span></div>
-            <div class="url"><span id="urlBar">mybusiness.wixsite.com/mysite</span></div>
-            <span class="mk mk-chrome mk-tab" id="mk1" style="--i:0">1</span>
-            <span class="mk mk-chrome mk-url" id="mk2" style="--i:1">2</span>
+            <div class="tab swap" data-fix="1">
+              <span class="b">Mysite</span>
+              <span class="a">Sample Painting Co. | Painters in Oakville</span>
+            </div>
+            <div class="url swap" data-fix="2">
+              <span class="b">mybusiness.wixsite.com/mysite</span>
+              <span class="a">samplepainting.ca</span>
+            </div>
+            <span class="mk mk-chrome mk-tab" data-mk="1">1</span>
+            <span class="mk mk-chrome mk-url" data-mk="2">2</span>
           </div>
 
           <div class="screen">
-            <!-- TODAY: a typical free-builder site, marked up in red -->
-            <div class="view view-today" id="viewToday">
-              <div class="banner">This website was built with a free builder. Create yours today.<span class="mk" style="--i:2">3</span></div>
-              <div class="t-hero"><span>ABC Painting</span></div>
-              <div class="t-menu"><span>Home</span><span>About</span><span>Gallery</span><span>Contact</span><span class="mk" style="--i:3">4</span></div>
-              <p class="t-body">We do painting. Call us for a quote.</p>
-              <p class="t-phone">Call: <span class="bad">123-456-7890</span><span class="mk" style="--i:4">5</span></p>
-              <div class="t-social"><i></i><i></i><i></i><span class="mk" style="--i:5">6</span></div>
-              <p class="t-foot"><span class="bad">© 2023 by The Painting Company</span><span class="mk" style="--i:6">7</span></p>
+            <div class="banner" data-fix="3">
+              <span>This website was built with a free builder. Create yours today.</span>
+              <span class="mk" data-mk="3">3</span>
             </div>
-
-            <!-- AFTER: a plainly labelled sample layout -->
-            <div class="view view-after" id="viewAfter" hidden>
-              <div class="a-bar"><strong>Sample Painting Co.</strong><span>Menu</span></div>
-              <div class="a-hero">
-                <p class="a-kicker">Sample layout, not a real business</p>
-                <h2>Painting for homes in Oakville and Burlington</h2>
-                <a class="a-btn" href="#demo" tabindex="-1" aria-hidden="true">Request a quote</a>
-              </div>
-              <ul class="a-list">
-                <li><b>Interior</b> Walls, trim, ceilings</li>
-                <li><b>Exterior</b> Siding, decks, fences</li>
-                <li><b>Cabinets</b> Kitchens and vanities</li>
-              </ul>
-              <div class="a-tap"><b>Tap to call</b> Your real number goes here</div>
-              <div class="a-map">Service areas and map</div>
-              <p class="a-foot">© 2026 Sample Painting Co.</p>
+            <div class="t-hero">
+              <span class="swap" data-fix="1"><span class="b">ABC Painting</span><span class="a">Sample Painting Co.</span></span>
+            </div>
+            <div class="t-menu" data-fix="4">
+              <span>Home</span><span>About</span><span>Gallery</span><span>Contact</span>
+              <span class="mk" data-mk="4">4</span>
+            </div>
+            <p class="t-body">We do painting. Call us for a quote.</p>
+            <div class="t-phone swap" data-fix="5">
+              <span class="b">Call: <span class="bad">123-456-7890</span></span>
+              <span class="a"><span class="callbtn">Tap to call</span></span>
+              <span class="mk" data-mk="5">5</span>
+            </div>
+            <div class="t-social swap" data-fix="6">
+              <span class="b"><i></i><i></i><i></i></span>
+              <span class="a"><em>Facebook</em><em>Instagram</em></span>
+              <span class="mk" data-mk="6">6</span>
+            </div>
+            <div class="t-foot swap" data-fix="7">
+              <span class="b"><span class="bad">© 2023 by The Painting Company</span></span>
+              <span class="a">© 2026 Sample Painting Co.</span>
+              <span class="mk" data-mk="7">7</span>
             </div>
           </div>
         </div>
-        <p class="demo-note" id="demoNote">The red numbers match the list below. Switch views to see the same page fixed.</p>
+        <p class="demo-note" id="demoNote">A sample page, not a real business. Scroll to fix it.</p>
       </div>
-    </section>
 
-    <section class="band" id="fixes" aria-labelledby="fixes-h">
-      <div class="wrap">
+      <section class="fixes-head" id="fixes" aria-labelledby="fixes-h">
         <h2 id="fixes-h">The small things that make a site look unfinished</h2>
         <p class="intro">I’ve looked at a lot of small-business sites built on free builders. The same seven problems keep turning up. Each one is quick to fix and costs you customers while it’s there.</p>
+      </section>
 
-        <ol class="redline">
-          <li>
-            <span class="n">1</span>
-            <span class="was">The browser tab says “Mysite”</span>
-            <span class="now">The tab shows your business name and what you do</span>
-          </li>
-          <li>
-            <span class="n">2</span>
-            <span class="was">The address ends in wixsite.com or weebly.com</span>
-            <span class="now">Your own .ca or .com address, in your name</span>
-          </li>
-          <li>
-            <span class="n">3</span>
-            <span class="was">A banner advertises the website builder</span>
-            <span class="now">Nothing on the page but your business</span>
-          </li>
-          <li>
-            <span class="n">4</span>
-            <span class="was">Every menu link goes to the same page</span>
-            <span class="now">Each page has its own address, so Google can find it</span>
-          </li>
-          <li>
-            <span class="n">5</span>
-            <span class="was">The phone number is a placeholder like 123-456-7890</span>
-            <span class="now">Your real number, one tap to call</span>
-          </li>
-          <li>
-            <span class="n">6</span>
-            <span class="was">Social icons open the builder’s accounts, not yours</span>
-            <span class="now">Links go to your Facebook and Instagram</span>
-          </li>
-          <li>
-            <span class="n">7</span>
-            <span class="was">The footer says “© 2023 by The Painting Company”</span>
-            <span class="now">Your business name and the current year</span>
-          </li>
-        </ol>
-      </div>
-    </section>
+      <ol class="steps-scroll">
+        <li class="step" data-step="1">
+          <span class="n">1</span>
+          <div><p class="was">The browser tab says “Mysite”</p><p class="now">The tab shows your business name and what you do</p></div>
+        </li>
+        <li class="step" data-step="2">
+          <span class="n">2</span>
+          <div><p class="was">The address ends in wixsite.com or weebly.com</p><p class="now">Your own .ca or .com address, in your name</p></div>
+        </li>
+        <li class="step" data-step="3">
+          <span class="n">3</span>
+          <div><p class="was">A banner advertises the website builder</p><p class="now">Nothing on the page but your business</p></div>
+        </li>
+        <li class="step" data-step="4">
+          <span class="n">4</span>
+          <div><p class="was">Every menu link goes to the same page</p><p class="now">Each page has its own address, so Google can find it</p></div>
+        </li>
+        <li class="step" data-step="5">
+          <span class="n">5</span>
+          <div><p class="was">The phone number is a placeholder like 123-456-7890</p><p class="now">Your real number, one tap to call</p></div>
+        </li>
+        <li class="step" data-step="6">
+          <span class="n">6</span>
+          <div><p class="was">Social icons open the builder’s accounts, not yours</p><p class="now">Links go to your Facebook and Instagram</p></div>
+        </li>
+        <li class="step" data-step="7">
+          <span class="n">7</span>
+          <div><p class="was">The footer says “© 2023 by The Painting Company”</p><p class="now">Your business name and the current year</p></div>
+        </li>
+        <li class="step step-end" data-step="8">
+          <div>
+            <h3>That’s the whole job.</h3>
+            <p>A page that looks like it belongs to your business. Send me yours and I’ll show you what it could look like.</p>
+            <p class="actions">
+              <a class="btn" href="mailto:1premaratmin@gmail.com?subject=Free%20mockup%20request&amp;body=Business%20name%3A%0AMy%20current%20website%20address%20(if%20any)%3A%0A">Get a free mockup</a>
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
 
     <section class="wrap split" id="included" aria-labelledby="inc-h">
       <div>
