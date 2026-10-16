@@ -211,12 +211,18 @@ p { margin: 0 0 1rem; max-width: 62ch; }
   align-self: center;
 }
 .step p { margin: 0; }
+/* the strike-through draws itself left to right as each step is reached */
 .step .was {
+  display: inline;
   color: var(--red);
   font-size: 1.15rem;
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 100% 2px;
+  transition: background-size 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+.js .step .was { background-size: 0 2px; }
+.js .step.on .was, .js .step.done .was { background-size: 100% 2px; }
+.step.on .n { animation: bump 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.3); }
+@keyframes bump { 40% { transform: scale(1.35); } }
 .step .now {
   font-family: var(--display);
   font-weight: 750;
@@ -259,8 +265,6 @@ p { margin: 0 0 1rem; max-width: 62ch; }
   background: var(--paper);
   border-radius: 8px 8px 0 0;
   padding: 5px 10px;
-  margin-bottom: 6px;
-  width: 78%;
   font-weight: 600;
 }
 .url {
@@ -298,12 +302,20 @@ p { margin: 0 0 1rem; max-width: 62ch; }
   color: #fff;
   font: 700 12px/22px var(--display);
   text-align: center;
-  transform: scale(0);
-  animation: pop 0.35s cubic-bezier(0.3, 1.5, 0.5, 1) forwards;
-  animation-delay: calc(var(--i, 0) * 140ms + 500ms);
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-@keyframes pop { to { transform: scale(1); } }
+/* entrance: markers pop in one after another, once. After that (.ready) they only stamp when fixed. */
+.phone:not(.ready) .mk {
+  animation: pop 0.4s cubic-bezier(0.3, 1.5, 0.5, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 150ms + 800ms);
+}
+@keyframes pop { from { transform: scale(0); } }
+.phone.ready .mk.fixed { animation: stamp 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) both; }
+@keyframes stamp {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.7) rotate(-14deg); }
+  100% { transform: scale(1) rotate(0); }
+}
 .mk[data-mk="1"] { --i: 0; } .mk[data-mk="2"] { --i: 1; } .mk[data-mk="3"] { --i: 2; }
 .mk[data-mk="4"] { --i: 3; } .mk[data-mk="5"] { --i: 4; } .mk[data-mk="6"] { --i: 5; } .mk[data-mk="7"] { --i: 6; }
 
@@ -312,20 +324,22 @@ p { margin: 0 0 1rem; max-width: 62ch; }
 .mk.fixed::before { content: "\2713"; font-size: 12px; }
 .mk.fixed.active { box-shadow: 0 0 0 5px rgba(18, 26, 43, 0.22); }
 
-.mk-tab { top: 8px; left: calc(12px + 78% - 4px); }
-.mk-url { top: 38px; right: 8px; }
+/* chrome markers sit in line with the tab and address bar, never floating beside them */
+.crow { display: flex; align-items: center; gap: 8px; }
+.crow + .crow { margin-top: 6px; }
+.crow > .swap { flex: 1; min-width: 0; }
+.crow > .mk { position: static; flex: none; }
+
+/* page markers share one right-hand gutter and line up with the middle of their own row */
 .banner .mk, .t-menu .mk, .t-phone .mk, .t-social .mk, .t-foot .mk {
   right: 10px;
   top: 50%;
   margin-top: -11px;
 }
-.t-social .mk { top: 66%; }
+.t-social .mk { top: 22px; margin-top: 0; }
+.t-foot .mk { top: 33px; margin-top: 0; }
 
-.bad {
-  text-decoration: underline wavy var(--red);
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 3px;
-}
+.bad { text-decoration: none; }
 
 /* the page inside the phone */
 .banner {
@@ -361,7 +375,8 @@ p { margin: 0 0 1rem; max-width: 62ch; }
 }
 .t-menu > span:not(.mk) { transition: color 0.3s; }
 .t-menu.fixed > span:not(.mk) { color: var(--ink); font-family: var(--display); font-weight: 700; }
-.t-menu.fixed > span:first-child { box-shadow: inset 0 -3px 0 var(--tape); }
+.t-menu > span:first-child { border-radius: 3px; padding: 0 5px; margin: 0 -5px; transition: background-color 0.3s, color 0.3s; }
+.t-menu.fixed > span:first-child { background: var(--tape); }
 
 .t-body { font-size: 13px; padding: 14px 14px 0; margin: 0; max-width: none; }
 
@@ -388,6 +403,52 @@ p { margin: 0 0 1rem; max-width: 62ch; }
 }
 
 .t-foot { position: relative; font-size: 11px; color: #666; padding: 36px 14px 0; margin: 0; }
+
+/* ---------- motion that answers the scroll ---------- */
+
+/* the phone rises into place once on load, then the markers pop in behind it */
+.phone { animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+@keyframes rise { from { opacity: 0; translate: 0 28px; } }
+
+/* a yellow highlighter sweep crosses each element the moment its fix lands */
+.tab, .url, .banner, .t-menu, .t-phone, .t-social, .t-foot { position: relative; }
+.flash::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--tape);
+  pointer-events: none;
+  z-index: 1;
+  transform-origin: left center;
+  animation: sweep 0.95s cubic-bezier(0.3, 0.7, 0.2, 1) both;
+}
+@keyframes sweep {
+  0% { transform: scaleX(0); opacity: 0.6; }
+  45% { transform: scaleX(1); opacity: 0.6; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* new things arrive with a little spring instead of just appearing */
+.swap > .a { transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); }
+.t-hero .swap > .a { transform: translateY(8px) scale(0.94); }
+.t-hero .swap.fixed > .a { transform: none; }
+.t-phone.fixed .callbtn { animation: spring 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) 0.15s backwards; }
+.t-social.fixed .a em { animation: spring 0.55s cubic-bezier(0.2, 1.4, 0.4, 1) backwards; }
+.t-social.fixed .a em:nth-child(2) { animation-delay: 0.12s; }
+@keyframes spring { from { opacity: 0; transform: translateY(10px) scale(0.7); } }
+
+/* tape-measure progress under the phone: seven ticks that fill as fixes land */
+.progress { display: flex; gap: 4px; width: 300px; margin-top: 1rem; }
+.progress i {
+  flex: 1;
+  height: 8px;
+  background: var(--rule);
+  border-radius: 1px;
+  transition: background-color 0.3s, transform 0.4s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.progress i.on { background: var(--ink); }
+.progress i.latest { transform: scaleY(1.9); background: var(--tape); box-shadow: inset 0 0 0 1.5px var(--ink); }
 
 /* ---------- sections below the story ---------- */
 .band-dark {
@@ -532,6 +593,7 @@ p { margin: 0 0 1rem; max-width: 62ch; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .mk { animation: none; transform: scale(1); }
-  .btn, .step, .swap > :not(.mk), .banner, .mk { transition: none; }
+  .phone, .phone .mk, .phone.ready .mk.fixed, .step.on .n, .flash::after,
+  .t-phone.fixed .callbtn, .t-social.fixed .a em { animation: none !important; }
+  .btn, .step .now, .step .was, .swap > :not(.mk), .banner, .mk, .progress i, .t-menu > span { transition: none; }
 }
