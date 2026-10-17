@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request a quote | Sample Painting Co.</title>
+  <meta name="description" content="Request a quote for interior, exterior or cabinet painting.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1B2430">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;0,800;0,900;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sample.css">
+</head>
+<body>
+  <div class="samplebar">
+    <p>This is a sample site made by Pocket Sites. Sample Painting Co. is not a real business.</p>
+    <a href="../">Back to pocketsites.store</a>
+  </div>
+
+  <header class="site-head">
+    <a class="brand" href="index.html" aria-label="Sample Painting Co., home">
+      <span class="chipmark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-name">Sample Painting Co.</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span><span class="sr">Menu</span></button>
+    <nav id="site-nav" aria-label="Main"><a href="index.html">Home</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="contact.html" aria-current="page">Contact</a><a class="call-link" href="tel:+19055550142">Call (905) 555-0142</a></nav>
+  </header>
+
+  <main id="main">
+
+    <section class="page-head">
+      <h1>Request a quote</h1>
+      <p class="lede">Tell us about the job. We'll reply the same business day to book a quote visit.</p>
+    </section>
+
+    <section class="block contact">
+      <form id="quote" class="quote-form" novalidate>
+        <div class="field">
+          <label for="q-name">Your name</label>
+          <input id="q-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="q-phone">Phone</label>
+            <input id="q-phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="q-email">Email</label>
+            <input id="q-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="q-what">What would you like painted?</label>
+          <select id="q-what" name="what" required>
+            <option value="">Choose one</option>
+            <option>Interior rooms</option>
+            <option>Exterior</option>
+            <option>Kitchen cabinets</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="q-msg">Tell us a little more</label>
+          <textarea id="q-msg" name="message" rows="4"></textarea>
+        </div>
+        <button class="btn btn-main" type="submit">Send my request</button>
+        <p class="form-note" id="form-note" role="status"></p>
+      </form>
+
+      <aside class="contact-side">
+        <h2>Prefer to talk?</h2>
+        <p><a class="phone-big" href="tel:+19055550142">(905) 555-0142</a></p>
+        <p>Mon to Sat, 8 to 5<br><a href="mailto:hello@samplepainting.example">hello@samplepainting.example</a></p>
+        <h2>Where we work</h2>
+        <div class="areas"><span>Oakville</span><span>Burlington</span><span>Milton</span></div>
+        <div class="map" role="img" aria-label="A simple map with a pin on Oakville"></div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">Sample Painting Co.</p>
+        <p>Interior, exterior and cabinet painting in Oakville, Burlington and Milton.</p>
+      </div>
+      <div>
+        <p class="foot-h">Visit</p>
+        <p>Oakville, Ontario<br>Mon to Sat, 8 to 5</p>
+      </div>
+      <div>
+        <p class="foot-h">Contact</p>
+        <p><a href="tel:+19055550142">(905) 555-0142</a><br><a href="mailto:hello@samplepainting.example">hello@samplepainting.example</a></p>
+      </div>
+    </div>
+    <p class="legal">© 2026 Sample Painting Co. A sample site by <a href="../">Pocket Sites</a>.</p>
+  </footer>
+
+  <div class="callbar"><a class="cb-call" href="tel:+19055550142">Call</a><a class="cb-quote" href="contact.html">Get a quote</a></div>
+
+  <script src="sample.js"></script>
+</body>
+</html>

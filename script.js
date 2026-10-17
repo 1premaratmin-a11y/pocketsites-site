@@ -317,3 +317,13 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
   render();
 })();
+
+/* the live sample preview is a 1280px-wide page scaled to fit its frame */
+(function () {
+  var frame = document.getElementById('preview');
+  if (!frame) return;
+  function fit() { frame.style.setProperty('--k', (frame.clientWidth / 1280).toFixed(4)); }
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
